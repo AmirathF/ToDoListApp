@@ -1,0 +1,22 @@
+<h2>Ma To-Do List</h2>
+<div class="todo-container">
+
+  <div class="task-input">
+    <!-- 🔹 Champ d'ajout/modification -->
+    <input [(ngModel)]="newTask" placeholder="Ajouter une tâche..." (keydown.enter)="editMode ? saveTask() : addTask()">
+    <button *ngIf="!editMode" (click)="addTask()" id="addbutton" [disabled]="newTask.trim() === ''">Ajouter</button>
+    <button *ngIf="editMode" (click)="saveTask()">Modifier</button>
+  </div>
+
+  <!-- 🔹 Message d'erreur -->
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <!-- 🔹 Liste des tâches -->
+  <ul>
+    <li *ngFor="let task of tasks">
+      <span>{{ task.title }}</span>
+      <button (click)="editTask(task)">Modifier</button>
+      <button (click)="deleteTask(task._id)">Supprimer</button>
+    </li>
+  </ul>
+</div>
