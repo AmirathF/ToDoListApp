@@ -1,4 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:5000/tasks' // URL de ton backend
+    // apiUrl: 'http://localhost:5000/tasks' // URL de ton backend
+    apiUrl: 'https://todolistapi-o5se.onrender.com'
   };

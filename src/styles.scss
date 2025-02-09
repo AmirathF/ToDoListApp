@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+// 🎨 Palette de couleurs
+$primary-color: #007bff;
+$secondary-color: #28a745;
+$danger-color: #dc3545;
+$light-gray: #f4f4f4;
+$dark-gray: #333;
+
+// 📝 Typographie
+$font-family: 'Arial', sans-serif;
+$font-size: 16px;
+
+
+// 🌐 Mise en page globale
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    background-color: $light-gray;
+    margin: 0;
+    padding: 20px;
+    //background-color: #f8f9fa;
+    //text-align: center;
+  }
+  
+  button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
