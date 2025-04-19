@@ -7,13 +7,13 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = `${environment.apiUrl}/tasks`;
 
   constructor(private http: HttpClient) { }
 
    // Récupérer toutes les tâches
    getTasks(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    return this.http.get(`${this.apiUrl}`);
   }
 
   // Ajouter une tâche

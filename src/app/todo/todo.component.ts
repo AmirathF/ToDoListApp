@@ -18,7 +18,7 @@ export class TodoComponent implements OnInit {
   editedTaskId: string | null = null;
   editingIndex: number | null = null;
   errorMessage: string = '';
-  
+
 
   constructor(private todoService: TodoService) {}
     ngOnInit() {
@@ -26,8 +26,11 @@ export class TodoComponent implements OnInit {
   }
   getTasks() {
     this.todoService.getTasks().subscribe({
-      next: (data) => { this.tasks = data; },
-      error: (err) => { console.error("Erreur lors de la récupération des tâches :", err); }
+      next: (tasks) => {
+        this.tasks = tasks;
+      },
+      error: (err) => {
+        console.error("Erreur lors de la récupération des tâches :", err); }
     });
   }
 
@@ -37,14 +40,19 @@ export class TodoComponent implements OnInit {
       this.errorMessage = "La tâche ne peut pas être vide !";
       return;
     }
-    
+
+    // ✅ Si on est en mode édition, on met à jour la tâche au lieu d'en ajouter une nouvelle
+    if (this.editMode && this.editedTaskId) {
+      this.saveTask();
+      return;
+    }
 
     this.todoService.addTask(this.newTask).subscribe({
       next: (task) => {
         this.tasks.push(task);
         this.newTask = '';
         this.errorMessage = '';
-      }, 
+      },
       error: (err) => {
         console.error("Erreur lors de l'ajout :", err);
       }
@@ -54,6 +62,7 @@ export class TodoComponent implements OnInit {
   deleteTask(id: string) {
     this.todoService.deleteTask(id).subscribe(() => {
       this.tasks = this.tasks.filter(task => task._id !== id);
+
     });
   }
 
@@ -74,11 +83,11 @@ export class TodoComponent implements OnInit {
     const updatedTask = { title: this.newTask, completed: false };
 
     this.todoService.updateTask(this.editedTaskId, this.newTask, false).subscribe({
-      next: (updatedTask) => {  
+      next: (updatedTask) => {
         const index = this.tasks.findIndex(task => task._id === this.editedTaskId);
       if (index !== -1) {
         this.tasks[index] = updatedTask;
-        
+
       }
       //this.tasks[this.editingIndex!] = updatedTask;
       this.editMode = false;
