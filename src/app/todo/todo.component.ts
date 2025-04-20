@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import {FormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import {TodoitemComponent} from '../todoitem/todoitem.component';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss', '../app.component.scss'],
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule, TodoitemComponent]
 })
 export class TodoComponent implements OnInit {
 

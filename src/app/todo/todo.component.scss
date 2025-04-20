@@ -1,10 +1,10 @@
 @use '../../styles.scss' as *;
 /* ✅ Style du conteneur */
-.todo-container {
+/*.todo-container {
   max-width: 400px;
   margin: auto;
   text-align: center;
-}
+}*/
 
 /* ✅ Style des tâches */
 .todo-item {
@@ -38,7 +38,7 @@ button:hover {
   font-size: 14px;
 }
 
-  
+
   .edit-button {
     background-color: $primary-color;
     color: white;
@@ -47,7 +47,7 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
   .edit-button:hover {
     background-color: darken($primary-color, 10%);
   }
@@ -55,9 +55,8 @@ button:hover {
   .todo-item {
     transition: transform 0.2s ease-in-out, background-color 0.3s;
   }
-  
+
   .todo-item:hover {
     transform: scale(1.02);
     background-color: lighten($light-gray, 5%);
   }
-  

@@ -2,18 +2,19 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Ajout du FormsModule
 import { TodoComponent } from './todo/todo.component';
+import {NavbarComponent} from './navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-imports: [CommonModule, FormsModule, TodoComponent],  
+  imports: [CommonModule, FormsModule, TodoComponent, NavbarComponent],
 })
 export class AppComponent {
-  title = 'My To-Do List';
+  //title = 'My To-Do List';
 
-   // Liste des tâches 
+   // Liste des tâches
   //  tasks: string[] = [];
 
   // newTask: string = ''; // Nouvelle variable pour stocker la saisie
